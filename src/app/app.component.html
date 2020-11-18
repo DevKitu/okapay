@@ -1,0 +1,39 @@
+<div class="main">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <div fxLayout="row" fxLayoutAlign="end center" fxFlexFill >
+          <div fxFlex="45" id="nav-logo"><a href="">OKAPay <em>.</em></a></div>
+          <span class="menu-spacer"></span>
+          <div fxFlex="45" fxShow="true" fxHide.lt-md fxFlex.lt-md="0">
+            <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+              <a routerLink="/process/processing" mat-button>Service</a>
+              <a routerLink="/process/payment" mat-button>Contact </a>
+          </div>
+          <div fxFlex="10" fxShow="true" fxHide.lt-md fxFlex.lt-md="0">
+            <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+              <a routerLink="/login" mat-button>Login</a>
+              <a routerLink="/signup" mat-button>Signup</a>
+          </div>
+
+      </div>
+      <button class="" mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+        <mat-icon>menu</mat-icon>
+      </button>
+      </mat-toolbar-row>
+  </mat-toolbar>
+
+  <mat-sidenav-container fxFlexFill>
+    <mat-sidenav #sidenav>
+      <mat-nav-list>
+        <a (click)="sidenav.toggle()" routerLink="" mat-list-item >Service</a>
+        <a (click)="sidenav.toggle()" routerLink="" mat-list-item >Contact</a>
+        <a (click)="sidenav.toggle()" routerLink="/login" mat-list-item >Login</a>
+        <a (click)="sidenav.toggle()" routerLink="/signup" mat-list-item >Signup</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content fxFlexFill class="page">
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+</div>

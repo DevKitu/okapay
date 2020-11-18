@@ -1,0 +1,33 @@
+mat-card {
+  width: 800px;
+  margin: 16px auto;
+  font-size: 16px;
+}
+
+mat-card-header {
+  background:#5DBCD2;
+  padding: 20px;
+  font-size: 1.4em;
+  font-weight: normal;
+  text-align: center;
+  color: #fff;
+}
+
+
+input, textarea, mat-form-field {
+  width: 50%;
+  padding-left: 1rem
+}
+
+button {
+  padding-left: 1rem;
+  display: block;
+}
+
+mat-spinner {
+  margin: auto
+}
+
+input[type="file"] {
+  visibility: hidden
+}

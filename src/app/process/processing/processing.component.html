@@ -1,0 +1,126 @@
+<div class="bounds">
+
+	<div class="content" fxLayout="row" fxLayout.xs="column" fxFlexFill>
+
+		<div fxFlex="55" class="sec1" fxFlex.xs="50">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>Money Transfer</mat-card-title>
+          <mat-card-subtitle>anywhere in Africa</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <form [formGroup]="processForm" (submit)="onSubmitForm()" >
+            <div class="field">
+              <h4>Name</h4>
+              <mat-form-field appearance="outline">
+                <input
+                  matInput
+                  type="text"
+                  name="name"
+                  placeholder="name"
+                  formControlName="name"
+                 >
+                <mat-error *ngIf="processForm.get('name').invalid">Please enter a valid name</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="field">
+              <h4>Last Name</h4>
+              <mat-form-field appearance="outline">
+                <input
+                  matInput
+                  type="text"
+                  name="lastName"
+                  placeholder="lastName"
+                  formControlName="lastName"
+                 >
+                <mat-error *ngIf="processForm.get('lastName').invalid">Please enter a valid last name</mat-error>
+              </mat-form-field>
+            </div>
+						<div>
+							<h4>country</h4>
+							<mat-form-field appearance="outline">
+								<mat-label>Choose an destination country</mat-label>
+								<mat-select	formControlName="country" (selectionChange)="countrySelected($event)">
+									<mat-option *ngFor="let country of countries" [value]="country.name">
+										{{country.name}}
+									</mat-option>
+								</mat-select>
+								<mat-error *ngIf="processForm.get('country').invalid">Please select a valid country</mat-error>
+							</mat-form-field>
+						</div>
+						<div>
+							<h4>Reason</h4>
+							<mat-form-field appearance="outline">
+								<mat-label>Choose an reason for sending</mat-label>
+								<mat-select	formControlName="reason" >
+									<mat-option *ngFor="let reason of reasons" [value]="reason.name">
+										{{reason.name}}
+									</mat-option>
+								</mat-select>
+								<mat-error *ngIf="processForm.get('reason').invalid">Please select a valid reason</mat-error>
+							</mat-form-field>
+						</div>
+            <div class="field">
+              <h4>phone number</h4>
+              <mat-form-field appearance="outline">
+                <input
+                  matInput
+                  type="number"
+                  name="phone"
+                  placeholder="phone"
+                  formControlName="phone"
+                 >
+                <span style="width:20px !important"  matPrefix>
+                  <mat-label>{{code}} </mat-label>
+                </span>
+                <mat-error *ngIf="processForm.get('phone').invalid">Please enter a valid name</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="field">
+              <h4>email</h4>
+              <mat-form-field appearance="outline">
+                <input
+                  matInput
+                  type="text"
+                  name="email"
+                  placeholder="email"
+                  formControlName="email"
+                 >
+                <mat-error *ngIf="processForm.get('email').invalid">Please enter a valid last email</mat-error>
+              </mat-form-field>
+            </div>
+
+            <hr>
+            <button mat-button color="primary" type="submit">Continue</button>
+          </form>
+        </mat-card-content>
+      </mat-card>
+
+		</div>
+
+		<div fxFlex="45" class="sec2" fxFlex.xs="50">
+			<mat-card class="example-card">
+				<mat-card-header>
+					<div mat-card-avatar class="example-header-image"></div>
+					<mat-card-title> Transactions details  </mat-card-title>
+					<mat-card-subtitle>Payment to the client</mat-card-subtitle>
+				</mat-card-header>
+				<mat-card-content>
+					<mat-list>
+					  <mat-list-item>{{' ' + 'You send ' + apiData.data.send +' '+ apiData.data.currency}}</mat-list-item>
+						<mat-list-item>{{' ' + 'They get ' +  apiData.data.received}}</mat-list-item>
+						<mat-list-item>{{' ' + 'Send Option ' +  apiData.data.sendOption}}</mat-list-item>
+					  <mat-divider></mat-divider>
+						<mat-list-item>{{' ' + 'Rate: ' + apiData.data.rate}}</mat-list-item>
+					</mat-list>
+
+				</mat-card-content>
+				<mat-card-actions>
+					 <h2>{{' ' + 'Total Fees ' + apiData.data.totalFees}}</h2>
+					  <h1>{{' ' + 'Total Payment ' + apiData.data.totalPay}}</h1>
+				</mat-card-actions>
+			</mat-card>
+    </div>
+  </div>
+</div>

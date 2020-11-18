@@ -1,0 +1,7 @@
+{
+    "/api/*": {
+        "target": "https://us-central1-report-9990d.cloudfunctions.net/localAPI/",
+        "secure": false,
+        "logLevel": "debug"
+    }
+}

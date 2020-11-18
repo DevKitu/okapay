@@ -1,0 +1,209 @@
+<p>beneficiary-create works!</p>
+
+<mat-card *ngIf=" mode === 'edit' && beneficiary && !isLoading || mode === 'create'; else loading" >
+    <mat-card-header color="secondary">
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>REGISTER HARVESTER</mat-card-title>
+        <mat-card-subtitle>Enter the harvester details below: </mat-card-subtitle>
+    </mat-card-header>
+
+  <form [formGroup]="form" (submit)="onSaveBeneficiary()"   #formDirective="ngForm"  >
+    <mat-card-content>
+    <pre></pre>
+    <h5> <mat-icon>account_circle</mat-icon> User Details</h5>
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="name"
+        placeholder="Name"
+        formControlName="name"
+      >
+        <mat-error *ngIf="form.get('name').invalid">Please enter a valid name, minimun 3 characters</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="surName"
+        placeholder="Surname"
+        formControlName="surName"
+      >
+        <mat-error *ngIf="form.get('surName').invalid">Please enter a valid surname, minimun 3 characters</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input
+          matInput
+          type="text"
+          name="idNumber"
+          placeholder="ID Number"
+          formControlName="idNumber"
+        >
+          <mat-error *ngIf="form.get('idNumber').invalid">Please enter a valid ID number, minimun 3 characters</mat-error>
+      </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="email"
+        placeholder="Email"
+        formControlName="email"
+      >
+        <mat-error *ngIf="form.get('email').invalid">Please enter a valid email, minimun 3 characters</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Choose your gender</mat-label>
+      <mat-select matNativeControl  formControlName="gender">
+          <mat-option *ngFor="let gender of genders" [value]="gender">
+            {{gender}}
+          </mat-option>
+      </mat-select>
+        <mat-error *ngIf="form.get('gender').invalid">Please enter a valid gender, minimun 3 characters</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="phoneNumber"
+        placeholder="phone number"
+        formControlName="phoneNumber"
+      >
+      <mat-error *ngIf="form.get('phoneNumber').invalid">Please enter a valid phone number, minimun 3 characters</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+            <input
+            matInput
+            type="text"
+            name="dateOfBirth"
+            placeholder="Date Of Birth"
+            formControlName="dateOfBirth"
+            [matDatepicker]="dateOfBirth"
+            >
+            <mat-datepicker-toggle matSuffix [for]="dateOfBirth"></mat-datepicker-toggle>
+            <mat-datepicker #dateOfBirth></mat-datepicker>
+            <mat-error *ngIf="form.get('dateOfBirth').invalid">Please enter a valid date of birth, minimun 3 characters</mat-error>
+        </mat-form-field>
+
+        <pre></pre>
+        <h5> <mat-icon>credit_card</mat-icon> Bank Details</h5>
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            name="bankName"
+            placeholder="bank Name"
+            formControlName="bankName"
+          >
+            <mat-error *ngIf="form.get('bankName').invalid">Please enter a valid bank Name, minimun 3 characters</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input
+              matInput
+              type="text"
+              name="bankBranch"
+              placeholder="branch Name"
+              formControlName="bankBranch"
+            >
+              <mat-error *ngIf="form.get('bankBranch').invalid">Please enter a valid branch Name, minimun 3 characters</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+              <input
+                matInput
+                type="text"
+                name="bankAccNum"
+                placeholder="bank Account Number"
+                formControlName="bankAccNum"
+              >
+                <mat-error *ngIf="form.get('bankAccNum').invalid">Please enter a valid bank Account Number, minimun 3 characters</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input
+                  matInput
+                  type="text"
+                  name="bankHoldName"
+                  placeholder="bank Account Holder Name"
+                  formControlName="bankHoldName"
+                >
+                  <mat-error *ngIf="form.get('bankHoldName').invalid">Please enter a valid bank Account Holder Name, minimun 3 characters</mat-error>
+              </mat-form-field>
+              <pre></pre>
+              <h5> <mat-icon>address</mat-icon> Address Details</h5>
+              <mat-form-field>
+                  <mat-label>Choose your address type</mat-label>
+                  <mat-select matNativeControl  formControlName="addressType">
+                      <mat-option *ngFor="let atype of addressTypes" [value]="atype">
+                        {{atype}}
+                      </mat-option>
+                  </mat-select>
+                    <mat-error *ngIf="form.get('addressType').invalid">Please enter a valid address type, minimun 3 characters</mat-error>
+                </mat-form-field>
+              <mat-form-field>
+                <input
+                  matInput
+                  type="text"
+                  name="addressStreet"
+                  placeholder="street name"
+                  formControlName="addressStreet"
+                >
+                  <mat-error *ngIf="form.get('addressStreet').invalid">Please enter a valid street, minimun 3 characters</mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                  <input
+                    matInput
+                    type="text"
+                    name="addressSuburb"
+                    placeholder="suburb name"
+                    formControlName="addressSuburb"
+                  >
+                    <mat-error *ngIf="form.get('addressSuburb').invalid">Please enter a valid suburb , minimun 3 characters</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input
+                      matInput
+                      type="text"
+                      name="addressCity"
+                      placeholder="City name"
+                      formControlName="addressCity"
+                    >
+                      <mat-error *ngIf="form.get('addressCity').invalid">Please enter a valid city name, minimun 3 characters</mat-error>
+                  </mat-form-field>
+                  <mat-form-field>
+                      <input
+                        matInput
+                        type="text"
+                        name="addressProvince"
+                        placeholder="Province Name"
+                        formControlName="addressProvince"
+                      >
+                        <mat-error *ngIf="form.get('addressProvince').invalid">Please enter a valid province name, minimun 3 characters</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                      <input
+                        matInput
+                        type="text"
+                        name="addressCountry"
+                        placeholder="Country Name"
+                        formControlName="addressCountry"
+                      >
+                        <mat-error *ngIf="form.get('addressCountry').invalid">Please enter a valid province name, minimun 3 characters</mat-error>
+                    </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions>
+          <button
+          mat-raised-button
+          type="submit"
+          color = "accent"
+         >Save user
+        </button>
+      </mat-card-actions>
+    </form>
+
+
+  </mat-card>
+
+  <ng-template #loading >
+      <p class=" info-text mate-body-1">Page Loading....</p>
+      <mat-spinner *ngIf="isLoading"> </mat-spinner>
+  </ng-template>
+
+  <hr>
